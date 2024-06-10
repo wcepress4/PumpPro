@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import UserService from '../services/UserService'
 
 const AddUserComponent = () => {
@@ -71,6 +71,7 @@ const AddUserComponent = () => {
                                 </div>
 
                                 <button className='btn btn-success' onClick={(e) => saveUser(e)}>Submit</button>
+                                <Link to="/users" className='btn btn-danger'> Cancel </Link>
 
                             </form>
                         </div>
