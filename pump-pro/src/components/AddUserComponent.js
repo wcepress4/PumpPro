@@ -6,13 +6,13 @@ const AddUserComponent = () => {
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
-    const [emailId, setEmailId] = useState('')
+    const [email, setEmail] = useState('')
     const navigate = useNavigate();
 
     const saveUser = (e) => {
         e.preventDefault();
 
-        const user = { firstName, lastName, emailId }
+        const user = { firstName, lastName, email }
 
         UserService.createUser(user).then((response) => {
             console.log(response.data)
@@ -32,7 +32,7 @@ const AddUserComponent = () => {
                         <div className='card-body'>
                             <form>
                                 <div className='form-group mb-2'>
-                                    <label className='form-labael'> First Name :</label>
+                                    <label className='form-label'> First Name :</label>
                                     <input 
                                         type="text" 
                                         placeholder="Enter first name" 
@@ -45,7 +45,7 @@ const AddUserComponent = () => {
                                 </div>
 
                                 <div className='form-group mb-2'>
-                                    <label className='form-labael'> Last Name :</label>
+                                    <label className='form-label'> Last Name :</label>
                                     <input 
                                         type="text" 
                                         placeholder="Enter last name" 
@@ -58,14 +58,14 @@ const AddUserComponent = () => {
                                 </div>
 
                                 <div className='form-group mb-2'>
-                                    <label className='form-labael'> Email Id :</label>
+                                    <label className='form-label'> Email :</label>
                                     <input 
                                         type="email" 
                                         placeholder="Enter email" 
-                                        name="emailId" 
+                                        name="email" 
                                         className="form-control" 
-                                        value={emailId} 
-                                        onChange= {(e) => setEmailId(e.target.value)}
+                                        value={email} 
+                                        onChange= {(e) => setEmail(e.target.value)}
                                     >
                                     </input>
                                 </div>

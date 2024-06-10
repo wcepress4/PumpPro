@@ -7,7 +7,7 @@ const HeaderComponent = () => {
             <nav className = "navbar navabr-expand-md navbar-dark bg-dark">
                 <div>
                     <a href="https://wcepress.me" className='navbar-brand'>
-                        User Management Application
+                        PumpPro
                     </a>
                 </div>
             </nav>
