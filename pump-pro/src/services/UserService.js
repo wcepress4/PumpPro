@@ -18,6 +18,10 @@ class UserService {
     updateUser(userId, user) {
         return axios.put(USER_BASE_REST_API_URL + '/' + userId, user)
     }
+
+    deleteUser(userId) {
+        return axios.delete(USER_BASE_REST_API_URL + '/' + userId)
+    }
 }
 
 export default new UserService();

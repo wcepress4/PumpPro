@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
 import ListUserComponent from './components/ListUserComponent';
@@ -8,7 +8,7 @@ import AddUserComponent from './components/AddUserComponent';
 function App() {
   return (
     <div>
-      <Router>
+      <BrowserRouter>
         <HeaderComponent />
         <div className = "container">
         <Routes>
@@ -20,7 +20,7 @@ function App() {
         </Routes>
         </div>
         <FooterComponent />
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }

@@ -8,14 +8,25 @@ const ListUserComponent = () => {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
+        getAllUsers();
+    }, [])
 
+    const getAllUsers = () => {
         UserService.getAllUsers().then((response) => {
             setUsers(response.data)
             console.log(response.data)
         }).catch(error => {
             console.log(error);
         })
-    }, [])
+    }
+
+    const deleteUser = (userId) => {
+        UserService.deleteUser(userId).then((response) => {
+            getAllUsers();
+        }).catch(error => {
+            console.log(error);
+        })
+    }
 
     return (
         <div className = "container">
@@ -41,6 +52,8 @@ const ListUserComponent = () => {
                                 <td> {user.email} </td>
                                 <td>
                                     <Link className="btn btn-info" to={`/edit-user/${user.id}`}> Update </Link>
+                                    <button className="btn btn-danger" onClick = {() => deleteUser(user.id)}
+                                    style = {{marginLeft:"10px"}} > Delete </button>
                                 </td>
                             </tr>
                         )
