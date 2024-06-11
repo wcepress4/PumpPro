@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {Link, useNavigate} from 'react-router-dom';
+import React, {useState, useEffect} from 'react'
+import {Link, useNavigate, useParams} from 'react-router-dom';
 import UserService from '../services/UserService'
 
 const AddUserComponent = () => {
@@ -8,6 +8,7 @@ const AddUserComponent = () => {
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const navigate = useNavigate();
+    const {id} = useParams();
 
     const saveUser = (e) => {
         e.preventDefault();
@@ -22,13 +23,35 @@ const AddUserComponent = () => {
         })
     }
 
+    useEffect(() => {    
+        
+        UserService.getUserById(id).then((response) =>{
+            setFirstName(response.data.firstName)
+            setLastName(response.data.lastName)
+            setEmail(response.data.email)
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [])
+
+    const title = () => {
+
+        if(id) {
+            return <h2 className = "text-center"> Update User </h2>
+        } else {
+            return <h2 className = "text-center"> Add User </h2>
+        }
+    }
+
     return (
         <div>
             <br/> <br/>
             <div className='container'>
                 <div className='row'>
                     <div className='card col-md-6 offest-md-3 offset-md-3'>
-                        <h2 className='text-center'> Add User </h2>
+                        {
+                            title()
+                        }
                         <div className='card-body'>
                             <form>
                                 <div className='form-group mb-2'>

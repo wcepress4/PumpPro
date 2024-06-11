@@ -16,6 +16,7 @@ function App() {
           <Route path="/users" element={<ListUserComponent/>} />
           <Route path="*" element={<ListUserComponent/>} />
           <Route path = "/add-user" element = {<AddUserComponent/>} ></Route>
+          <Route path = "/edit-user/:id" element = {<AddUserComponent/>}> </Route>
         </Routes>
         </div>
         <FooterComponent />
