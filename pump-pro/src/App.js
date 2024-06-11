@@ -12,9 +12,9 @@ function App() {
         <HeaderComponent />
         <div className = "container">
         <Routes>
-          <Route index element={<ListUserComponent/>}/>
+          {/* <Route index element={<ListUserComponent/>}/> */}
           <Route path="/users" element={<ListUserComponent/>}/>
-          <Route path="*" element={<ListUserComponent/>}/>
+          <Route path="/" element={<ListUserComponent/>}/>
           <Route path = "/add-user" element = {<AddUserComponent/>}/>
           <Route path = "/edit-user/:id" element = {<AddUserComponent/>}/>
         </Routes>
