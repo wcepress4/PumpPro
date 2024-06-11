@@ -10,29 +10,41 @@ const AddUserComponent = () => {
     const navigate = useNavigate();
     const {id} = useParams();
 
-    const saveUser = (e) => {
+    const saveOrUpdateUser = (e) => {
         e.preventDefault();
 
         const user = { firstName, lastName, email }
 
-        UserService.createUser(user).then((response) => {
-            console.log(response.data)
-            navigate('/users');
-        }).catch(error => {
-            console.log(error)
-        })
+        if(id) {
+            console.log(`Updating user with id: ${id}`);
+            UserService.updateUser(id, user).then((response) => {
+                console.log(response.data)
+                navigate('/users');
+            }).catch(error => {
+                console.log(error);
+            })
+        } else {
+            UserService.createUser(user).then((response) => {
+                console.log(response.data)
+                navigate('/users');
+            }).catch(error => {
+                console.log(error)
+            })
+        }
     }
 
-    useEffect(() => {    
-        
-        UserService.getUserById(id).then((response) =>{
-            setFirstName(response.data.firstName)
-            setLastName(response.data.lastName)
-            setEmail(response.data.email)
-        }).catch(error => {
-            console.log(error)
-        })
-    }, [])
+    useEffect(() => {   
+        if(id) {
+            console.log(`Fetching user data for id: ${id}`);
+            UserService.getUserById(id).then((response) =>{
+                setFirstName(response.data.firstName);
+                setLastName(response.data.lastName);
+                setEmail(response.data.email);
+            }).catch(error => {
+                console.log(error)
+            });
+        }
+    }, [id]);
 
     const title = () => {
 
@@ -93,7 +105,7 @@ const AddUserComponent = () => {
                                     </input>
                                 </div>
 
-                                <button className='btn btn-success' onClick={(e) => saveUser(e)}>Submit</button>
+                                <button className='btn btn-success' onClick = {(e) => saveOrUpdateUser(e)} >Submit </button>
                                 <Link to="/users" className='btn btn-danger'> Cancel </Link>
 
                             </form>

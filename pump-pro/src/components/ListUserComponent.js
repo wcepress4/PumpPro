@@ -40,7 +40,7 @@ const ListUserComponent = () => {
                                 <td> {user.lastName} </td>
                                 <td> {user.email} </td>
                                 <td>
-                                    <Link className="btn btn-info" to={'/edit-user/${user.id}'}> Update </Link>
+                                    <Link className="btn btn-info" to={`/edit-user/${user.id}`}> Update </Link>
                                 </td>
                             </tr>
                         )
