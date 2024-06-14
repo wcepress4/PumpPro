@@ -31,7 +31,7 @@ const ListUserComponent = () => {
     return (
         <div className = "container">
             <h2 className='text-center'>List Users</h2>
-            <Link to = "/add-user" className='btn btn-primary mb-2'> Add User </Link>
+            <Link to = "/admin/add-user" className='btn btn-primary mb-2'> Add User </Link>
             <table className='table table-bordered table-striped'>
                 <thead>
                     <th> User Id </th>

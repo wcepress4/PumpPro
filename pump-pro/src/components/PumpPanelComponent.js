@@ -1,12 +1,12 @@
 import React from 'react';
 
-const HistoryComponent = () => {
+const PumpPanelComponent = () => {
   return (
     <div>
-      <h2>History Page</h2>
-      <p>This is the history component. Add your content here.</p>
+      <h2>PumpPanel Page</h2>
+      <p>This is the pump panel component. Add your content here.</p>
     </div>
   );
 };
 
-export default HistoryComponent;
+export default PumpPanelComponent;

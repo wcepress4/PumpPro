@@ -9,6 +9,7 @@ import LoginComponent from './components/LoginComponent';
 import SignupComponent from './components/SignupComponent';
 import PumpPlansComponent from './components/PumpPlansComponent';
 import PumpPediaComponent from './components/PumpPediaComponent';
+import PumpWorkoutComponent from './components/PumpWorkoutComponent';
 
 import ListUserComponent from './components/ListUserComponent';
 import AddUserComponent from './components/AddUserComponent';
@@ -31,6 +32,7 @@ function App() {
           <Route path="/signup" element={<SignupComponent />} />
           <Route path="/pump-plans" element={<PumpPlansComponent />} />
           <Route path="/pump-pedia" element={<PumpPediaComponent />} />
+          <Route path="/pump-workout" element={<PumpWorkoutComponent />} />
         </Routes>
         </div>
         <FooterComponent />
