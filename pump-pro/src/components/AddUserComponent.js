@@ -19,14 +19,14 @@ const AddUserComponent = () => {
             console.log(`Updating user with id: ${id}`);
             UserService.updateUser(id, user).then((response) => {
                 console.log(response.data)
-                navigate('/users');
+                navigate('/admin/users');
             }).catch(error => {
                 console.log(error);
             })
         } else {
             UserService.createUser(user).then((response) => {
                 console.log(response.data)
-                navigate('/users');
+                navigate('/admin/users');
             }).catch(error => {
                 console.log(error)
             })
@@ -106,7 +106,7 @@ const AddUserComponent = () => {
                                 </div>
 
                                 <button className='btn btn-success' onClick = {(e) => saveOrUpdateUser(e)} >Submit </button>
-                                <Link to="/users" className='btn btn-danger'> Cancel </Link>
+                                <Link to="/admin/users" className='btn btn-danger'> Cancel </Link>
 
                             </form>
                         </div>

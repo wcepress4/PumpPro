@@ -51,7 +51,7 @@ const ListUserComponent = () => {
                                 <td> {user.lastName} </td>
                                 <td> {user.email} </td>
                                 <td>
-                                    <Link className="btn btn-info" to={`/edit-user/${user.id}`}> Update </Link>
+                                    <Link className="btn btn-info" to={`/admin/edit-user/${user.id}`}> Update </Link>
                                     <button className="btn btn-danger" onClick = {() => deleteUser(user.id)}
                                     style = {{marginLeft:"10px"}} > Delete </button>
                                 </td>
