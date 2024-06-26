@@ -31,7 +31,7 @@ const ListUser = () => {
     return (
         <div className = "container">
             <h2 className='text-center'>List Users</h2>
-            <Link to = "/admin/add-user" className='btn btn-primary mb-2'> Add User </Link>
+            {/* <Link to = "/admin/add-user" className='btn btn-primary mb-2'> Add User </Link> */}
             <table className='table table-bordered table-striped'>
                 <thead>
                     <th> User Id </th>
@@ -40,6 +40,7 @@ const ListUser = () => {
                     <th> First Name </th>
                     <th> Last Name </th>
                     <th> Email </th>
+                    <th> Role </th>
                     <th> Actions </th>
                 </thead>
                 <tbody>
@@ -52,6 +53,7 @@ const ListUser = () => {
                                 <td> {user.firstName} </td>
                                 <td> {user.lastName} </td>
                                 <td> {user.email} </td>
+                                <td> {user.role.toLowerCase()} </td>
                                 <td>
                                     <Link className="btn btn-info" to={`/admin/edit-user/${user.id}`}> Update </Link>
                                     <button className="btn btn-danger" onClick = {() => deleteUser(user.id)}

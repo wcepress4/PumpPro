@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const USER_BASE_REST_API_URL = "http://localhost:8080/api/v1/users";
-const AUTH_BASE_REST_API_URL = "http://localhost:8080";
+// const AUTH_BASE_REST_API_URL = "http://localhost:8080";
 
 class UserService {
     getAllUsers() {
@@ -24,13 +24,13 @@ class UserService {
         return axios.delete(USER_BASE_REST_API_URL + '/' + userId)
     }
 
-    registerUser(user) {
-        return axios.post(`${AUTH_BASE_REST_API_URL}/register`, user);
-    }
+    // registerUser(user) {
+    //     return axios.post(`${AUTH_BASE_REST_API_URL}/register`, user);
+    // }
 
-    loginUser(credentials) {
-        return axios.post(`${AUTH_BASE_REST_API_URL}/login`, credentials);
-    }
+    // loginUser(credentials) {
+    //     return axios.post(`${AUTH_BASE_REST_API_URL}/login`, credentials);
+    // }
 }
 
 export default new UserService();

@@ -2,36 +2,39 @@ import React, {useState, useEffect} from 'react'
 import {Link, useNavigate, useParams} from 'react-router-dom';
 import UserService from '../../services/UserService'
 
-const AddUserComponent = () => {
+const AddUser = () => {
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [login, setLogin] = useState('')
+    const [role, setRole] = useState('')
     const navigate = useNavigate();
     const {id} = useParams();
 
     const saveOrUpdateUser = (e) => {
         e.preventDefault();
 
-        const user = { login, firstName, lastName, email }
+        const user = { login, firstName, lastName, email, role }
 
         if(id) {
             console.log(`Updating user with id: ${id}`);
             UserService.updateUser(id, user).then((response) => {
                 console.log(response.data)
-                navigate('/admin/users');
+                navigate('/');
             }).catch(error => {
                 console.log(error);
+                console.error("Update User Error:", error);
             })
-        } else {
-            UserService.createUser(user).then((response) => {
-                console.log(response.data)
-                navigate('/admin/users');
-            }).catch(error => {
-                console.log(error)
-            })
-        }
+        } 
+        // else {
+        //     UserService.createUser(user).then((response) => {
+        //         console.log(response.data)
+        //         navigate('/');
+        //     }).catch(error => {
+        //         console.log(error)
+        //     })
+        // }
     }
 
     useEffect(() => {   
@@ -42,19 +45,27 @@ const AddUserComponent = () => {
                 setFirstName(response.data.firstName);
                 setLastName(response.data.lastName);
                 setEmail(response.data.email);
+                setRole(response.data.role);
+                // setIsAdmin(userData.isAdmin);
             }).catch(error => {
                 console.log(error)
             });
         }
     }, [id]);
 
+
+    const handleRoleChange = (e) => {
+        setRole(e.target.checked ? 'ADMIN' : 'USER');
+    };
+
     const title = () => {
 
         if(id) {
             return <h2 className = "text-center"> Update User </h2>
-        } else {
-            return <h2 className = "text-center"> Add User </h2>
-        }
+        } 
+        // else {
+        //     return <h2 className = "text-center"> Add User </h2>
+        // }
     }
 
     return (
@@ -120,8 +131,21 @@ const AddUserComponent = () => {
                                     </input>
                                 </div>
 
+                                <div className='form-check mb-2'>
+                                    <input
+                                        type="checkbox"
+                                        className="form-check-input"
+                                        id="adminCheck"
+                                        checked={role === 'ADMIN'}
+                                        onChange={handleRoleChange}
+                                    />
+                                    <label className='form-check-label' htmlFor="adminCheck">
+                                        Admin
+                                    </label>
+                                </div>
+
                                 <button className='btn btn-success' onClick = {(e) => saveOrUpdateUser(e)} >Submit </button>
-                                <Link to="/admin/users" className='btn btn-danger'> Cancel </Link>
+                                <Link to="/" className='btn btn-danger'> Cancel </Link>
 
                             </form>
                         </div>
@@ -132,4 +156,4 @@ const AddUserComponent = () => {
     )
 }
 
-export default AddUserComponent
+export default AddUser;

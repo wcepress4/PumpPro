@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import UserService from '../../services/UserService';
 import { useNavigate } from 'react-router-dom';
 
-const SignupComponent = () => {
+const Signup = () => {
   const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     login: '',
     email: '',
@@ -83,4 +84,4 @@ const SignupComponent = () => {
   );
 };
 
-export default SignupComponent;
+export default Signup;
