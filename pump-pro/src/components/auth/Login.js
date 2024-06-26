@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UserService from '../../services/UserService';
+import AuthService from '../../services/AuthService';
 import { useNavigate } from 'react-router-dom';
 
 const LoginComponent = () => {
@@ -19,11 +19,10 @@ const LoginComponent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await UserService.loginUser(formData);
+      const response = await AuthService.loginUser(formData);
       setSuccess('Login successful');
       console.log('Logged In User:', response.data);
-      navigate('/');
-      // Handle redirection or state update upon successful login
+      navigate('/home');
     } catch (error) {
       setError('Login failed');
       console.error('There was an error logging in!', error);
