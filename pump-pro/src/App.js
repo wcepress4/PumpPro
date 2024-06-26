@@ -1,18 +1,19 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HeaderComponent from './components/Header';
-import FooterComponent from './components/Footer';
-import PumpPanelComponent from './components/PumpPanel';
-import ExercisesComponent from './components/Exercises';
-import ProfileComponent from './components/Profile';
-import LoginComponent from './components/Login';
-import SignupComponent from './components/Signup';
-import PumpPlansComponent from './components/PumpPlans';
-import PumpPediaComponent from './components/PumpPedia';
-import PumpWorkoutComponent from './components/PumpWorkout';
+import HeaderComponent from './components/nav/Header';
+import FooterComponent from './components/nav/Footer';
+import PumpPanelComponent from './components/pages/PumpPanel';
+import ExercisesComponent from './components/pages/Exercises';
+import ProfileComponent from './components/pages/Profile';
+import LoginComponent from './components/auth/Login';
+import SignupComponent from './components/auth/Signup';
+import PumpPlansComponent from './components/pages/PumpPlans';
+import PumpPediaComponent from './components/pages/PumpPedia';
+import PumpWorkoutComponent from './components/pages/PumpWorkout';
 
-import ListUserComponent from './components/ListUser';
-import AddUserComponent from './components/AddUser';
+// admin features
+import ListUserComponent from './components/admin/ListUser';
+import AddUserComponent from './components//admin/AddUser';
 
 function App() {
   return (
