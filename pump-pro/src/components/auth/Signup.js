@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import UserService from '../../services/UserService';
+import AuthService from '../../services/AuthService';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const navigate = useNavigate();
-  
+
   const [formData, setFormData] = useState({
     login: '',
     email: '',
@@ -21,7 +21,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await UserService.registerUser(formData);
+      const response = await AuthService.registerUser(formData);
       setSuccess('Registration successful');
       console.log('Registered User:', response.data);
       // goes here???
