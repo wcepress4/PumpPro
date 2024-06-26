@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PumpWorkoutComponent = () => {
+const PumpWorkout = () => {
   return (
     <div>
       <h2>Pump Page</h2>
@@ -9,4 +9,4 @@ const PumpWorkoutComponent = () => {
   );
 };
 
-export default PumpWorkoutComponent;
+export default PumpWorkout;

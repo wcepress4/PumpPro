@@ -3,7 +3,7 @@ import UserService from '../../services/UserService'
 import { Link } from 'react-router-dom'
 import { setRequestMeta } from 'next/dist/server/request-meta'
 
-const ListUserComponent = () => {
+const ListUser = () => {
 
     const [users, setUsers] = useState([])
 
@@ -66,4 +66,4 @@ const ListUserComponent = () => {
     )
 }
 
-export default ListUserComponent;
+export default ListUser;

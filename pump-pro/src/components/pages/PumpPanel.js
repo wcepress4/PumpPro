@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PumpPanelComponent = () => {
+const PumpPanel = () => {
   return (
     <div>
       <h2>PumpPanel Page</h2>
@@ -9,4 +9,4 @@ const PumpPanelComponent = () => {
   );
 };
 
-export default PumpPanelComponent;
+export default PumpPanel;

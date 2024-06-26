@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PumpPlansComponent = () => {
+const PumpPlans = () => {
   return (
     <div>
       <h2>PumpPlans Page</h2>
@@ -9,4 +9,4 @@ const PumpPlansComponent = () => {
   );
 };
 
-export default PumpPlansComponent;
+export default PumpPlans;
