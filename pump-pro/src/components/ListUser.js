@@ -36,9 +36,10 @@ const ListUserComponent = () => {
                 <thead>
                     <th> User Id </th>
 
-                    <th> User First Name </th>
-                    <th> User Last Name </th>
-                    <th> User Email </th>
+                    <th> Username </th>
+                    <th> First Name </th>
+                    <th> Last Name </th>
+                    <th> Email </th>
                     <th> Actions </th>
                 </thead>
                 <tbody>
@@ -47,6 +48,7 @@ const ListUserComponent = () => {
                             user =>
                             <tr key = {user.id}>
                                 <td> {user.id} </td>
+                                <td> {user.login} </td>
                                 <td> {user.firstName} </td>
                                 <td> {user.lastName} </td>
                                 <td> {user.email} </td>
@@ -64,4 +66,4 @@ const ListUserComponent = () => {
     )
 }
 
-export default ListUserComponent
+export default ListUserComponent;

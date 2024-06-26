@@ -1,18 +1,18 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HeaderComponent from './components/HeaderComponent';
-import FooterComponent from './components/FooterComponent';
-import PumpPanelComponent from './components/PumpPanelComponent';
-import ExercisesComponent from './components/ExercisesComponent';
-import ProfileComponent from './components/ProfileComponent';
-import LoginComponent from './components/LoginComponent';
-import SignupComponent from './components/SignupComponent';
-import PumpPlansComponent from './components/PumpPlansComponent';
-import PumpPediaComponent from './components/PumpPediaComponent';
-import PumpWorkoutComponent from './components/PumpWorkoutComponent';
+import HeaderComponent from './components/Header';
+import FooterComponent from './components/Footer';
+import PumpPanelComponent from './components/PumpPanel';
+import ExercisesComponent from './components/Exercises';
+import ProfileComponent from './components/Profile';
+import LoginComponent from './components/Login';
+import SignupComponent from './components/Signup';
+import PumpPlansComponent from './components/PumpPlans';
+import PumpPediaComponent from './components/PumpPedia';
+import PumpWorkoutComponent from './components/PumpWorkout';
 
-import ListUserComponent from './components/ListUserComponent';
-import AddUserComponent from './components/AddUserComponent';
+import ListUserComponent from './components/ListUser';
+import AddUserComponent from './components/AddUser';
 
 function App() {
   return (

@@ -7,13 +7,14 @@ const AddUserComponent = () => {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
+    const [login, setLogin] = useState('')
     const navigate = useNavigate();
     const {id} = useParams();
 
     const saveOrUpdateUser = (e) => {
         e.preventDefault();
 
-        const user = { firstName, lastName, email }
+        const user = { login, firstName, lastName, email }
 
         if(id) {
             console.log(`Updating user with id: ${id}`);
@@ -37,6 +38,7 @@ const AddUserComponent = () => {
         if(id) {
             console.log(`Fetching user data for id: ${id}`);
             UserService.getUserById(id).then((response) =>{
+                setLogin(response.data.login);
                 setFirstName(response.data.firstName);
                 setLastName(response.data.lastName);
                 setEmail(response.data.email);
@@ -66,6 +68,19 @@ const AddUserComponent = () => {
                         }
                         <div className='card-body'>
                             <form>
+                                <div className='form-group mb-2'>
+                                    <label className='form-label'>  Username :</label>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Enter username" 
+                                        name="login" 
+                                        className="form-control" 
+                                        value={login} 
+                                        onChange= {(e) => setLogin(e.target.value)}
+                                    >
+                                    </input>
+                                </div>
+
                                 <div className='form-group mb-2'>
                                     <label className='form-label'> First Name :</label>
                                     <input 
