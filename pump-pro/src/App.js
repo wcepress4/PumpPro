@@ -21,7 +21,7 @@ import AuthHome from './components/user/AuthHome';
 
 // admin imports
 import ListUser from './components/admin/ListUser';
-import AddUser from './components//admin/AddUser';
+import EditUser from './components/admin/EditUser';
 
 function App() {
   return (
@@ -29,22 +29,31 @@ function App() {
       <BrowserRouter>
         <Header />
         <div className="flex-grow container mx-auto p-4">
-        <Routes>
-          <Route path="/admin/users" element={<ListUser />} />
-          <Route path="/admin/add-user" element={<AddUser />} />
-          <Route path="/admin/edit-user/:id" element={<AddUser />} />
-          <Route path="/" element={<ListUser />} />
-          <Route path="/pump-panel" element={<PumpPanel />} />
-          <Route path="/exercises" element={<Exercises />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/pump-plans" element={<PumpPlans />} />
-          <Route path="/pump-pedia" element={<PumpPedia />} />
-          <Route path="/pump-workout" element={<PumpWorkout />} />
-        </Routes>
+          <Routes>
+            {/* main routes */}
+            <Route path="/" element={<Home />} />
+            <Route path="/homepage" element={<Home />} />
+
+            {/* auth routes */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+
+            {/* admin routes */}
+            <Route path="/admin/users" element={<ListUser />} />
+            {/* <Route path="/admin/edit-user" element={<EditUser />} /> */}
+            <Route path="/admin/edit-user/:id" element={<EditUser />} />
+
+            {/* user routes */}
+            <Route path="/home" element={<AuthHome />} />
+            <Route path="/pump-panel" element={<PumpPanel />} />
+            <Route path="/exercises" element={<Exercises />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/pump-plans" element={<PumpPlans />} />
+            <Route path="/pump-pedia" element={<PumpPedia />} />
+            <Route path="/pump-workout" element={<PumpWorkout />} />
+          </Routes>
         </div>
-        <FooterComponent />
+        <Footer />
       </BrowserRouter>
     </div>
   );

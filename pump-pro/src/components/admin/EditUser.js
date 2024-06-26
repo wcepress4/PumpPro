@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Link, useNavigate, useParams} from 'react-router-dom';
 import UserService from '../../services/UserService'
 
-const AddUser = () => {
+const EditUser = () => {
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -21,7 +21,7 @@ const AddUser = () => {
             console.log(`Updating user with id: ${id}`);
             UserService.updateUser(id, user).then((response) => {
                 console.log(response.data)
-                navigate('/');
+                navigate('/admin/users');
             }).catch(error => {
                 console.log(error);
                 console.error("Update User Error:", error);
@@ -145,7 +145,7 @@ const AddUser = () => {
                                 </div>
 
                                 <button className='btn btn-success' onClick = {(e) => saveOrUpdateUser(e)} >Submit </button>
-                                <Link to="/" className='btn btn-danger'> Cancel </Link>
+                                <Link to="/admin/users" className='btn btn-danger'> Cancel </Link>
 
                             </form>
                         </div>
@@ -156,4 +156,4 @@ const AddUser = () => {
     )
 }
 
-export default AddUser;
+export default EditUser;
