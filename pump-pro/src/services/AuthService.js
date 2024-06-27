@@ -51,6 +51,11 @@ class AuthService {
     return null;
   } //getCurrentUser
 
+  getUserRole() {
+    const currentUser = this.getCurrentUser();
+    return currentUser ? currentUser.role : null; // Assuming role is stored in JWT payload
+  } //getUserRole
+
   isAdmin() {
     const currentUserRole = this.getUserRole();
     return currentUserRole === 'ADMIN';

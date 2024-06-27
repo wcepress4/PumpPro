@@ -5,6 +5,7 @@ import AuthService from '../../services/AuthService';
 
 const Header = () => {
   const isLoggedIn = AuthService.isLoggedIn();
+  const isAdmin = AuthService.isAdmin();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -61,6 +62,13 @@ const Header = () => {
                 PumpPedia
               </Link>
             </li>
+            {isAdmin && (
+              <li>
+                <Link to="/admin/users" className="text-gray-700 hover:text-red-600">
+                  Admin
+                </Link>
+              </li>
+            )}
           </ul>
           {isLoggedIn ? (
             <>
