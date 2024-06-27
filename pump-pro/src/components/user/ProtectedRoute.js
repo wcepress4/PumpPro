@@ -30,7 +30,12 @@ const ProtectedRoute = ({ children, roles }) => {
   }
 
   if (!isAuthorized) {
-    return <Navigate to="/home" />;
+    const isLoggedIn = AuthService.isLoggedIn();
+    if (isLoggedIn) {
+      return <Navigate to="/not-authorized" />;
+    } else {
+      return <Navigate to="/login" />;
+    }
   }
 
   return children;

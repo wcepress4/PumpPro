@@ -7,6 +7,7 @@ import Signup from './components/auth/Signup';
 import PumpPanel from './components/user/PumpPanel';
 import Exercises from './components/user/Exercises';
 import Profile from './components/user/Profile';
+import Settings from './components/user/Settings';
 import PumpPlans from './components/user/PumpPlans';
 import PumpPedia from './components/user/PumpPedia';
 import PumpWorkout from './components/user/PumpWorkout';
@@ -42,6 +43,7 @@ function App() {
             <Route path="/pump-panel" element={<ProtectedRoute roles={['USER', 'ADMIN']}><PumpPanel /></ProtectedRoute>} />
             <Route path="/exercises" element={<ProtectedRoute roles={['USER', 'ADMIN']}><Exercises /></ProtectedRoute>} />
             <Route path="/profile" element={<ProtectedRoute roles={['USER', 'ADMIN']}><Profile /></ProtectedRoute>} />
+            <Route path="/settings" element={<ProtectedRoute roles={['USER', 'ADMIN']}><Settings /></ProtectedRoute>} />
             <Route path="/pump-plans" element={<ProtectedRoute roles={['USER', 'ADMIN']}><PumpPlans /></ProtectedRoute>} />
             <Route path="/pump-pedia" element={<ProtectedRoute roles={['USER', 'ADMIN']}><PumpPedia /></ProtectedRoute>} />
             <Route path="/pump-workout" element={<ProtectedRoute roles={['USER', 'ADMIN']}><PumpWorkout /></ProtectedRoute>} />

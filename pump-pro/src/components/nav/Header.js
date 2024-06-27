@@ -1,17 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { VscAccount } from 'react-icons/vsc';
 import AuthService from '../../services/AuthService';
 
 const Header = () => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const isLoggedIn = AuthService.isLoggedIn();
-  const isAdmin = AuthService.isAdmin();
+  const isAdmin = AuthService.isAdmin(); // New isAdmin check
   const navigate = useNavigate();
+  const dropdownRef = useRef(null);
 
   const handleLogout = () => {
     AuthService.logoutUser();
     navigate('/welcome');
   };
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (dropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dropdownOpen]);
 
   return (
     <header className="bg-white shadow-md">
@@ -62,23 +86,52 @@ const Header = () => {
                 PumpPedia
               </Link>
             </li>
-            {isAdmin && (
-              <li>
-                <Link to="/admin/users" className="text-gray-700 hover:text-red-600">
-                  Admin
-                </Link>
-              </li>
-            )}
           </ul>
           {isLoggedIn ? (
-            <>
-              <Link to="/profile" className="text-gray-700 hover:text-red-600">
-                <VscAccount className="text-2xl" />
-              </Link>
-              <button onClick={handleLogout} className="bg-red-500 text-white px-3 py-1.5 w-18 rounded">
-                Logout
+            <div className="relative" ref={dropdownRef}>
+              <button 
+                onClick={toggleDropdown} 
+                className="flex items-center space-x-2"
+              >
+                <VscAccount className="text-2xl text-gray-700 hover:text-red-600" />
               </button>
-            </>
+              {dropdownOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-md z-10">
+                  <Link 
+                    to="/profile" 
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    Profile
+                  </Link>
+                  <Link 
+                    to="/settings" 
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    Settings
+                  </Link>
+                  {isAdmin && (
+                    <Link 
+                      to="/admin/users" 
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                      onClick={() => setDropdownOpen(false)}
+                    >
+                      Admin Panel
+                    </Link>
+                  )}
+                  <button 
+                    onClick={() => {
+                      setDropdownOpen(false);
+                      handleLogout();
+                    }} 
+                    className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
           ) : (
             <>
               <Link to="/login">
