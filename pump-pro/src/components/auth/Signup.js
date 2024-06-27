@@ -25,12 +25,13 @@ const Signup = () => {
       setSuccess('Registration successful');
       console.log('Registered User:', response);
       
-      // Redirect to home or admin page based on role
-      if (response.role === "ADMIN") {
-        navigate('/admin/users');
-      } else {
-        navigate('/home');
-      }
+      navigate('/home');
+      // // Redirect to home or admin page based on role
+      // if (response.role === "ADMIN") {
+      //   navigate('/home');
+      // } else {
+      //   navigate('/home');
+      // }
     } catch (error) {
       setError('Registration failed');
       console.error('There was an error registering the user!', error);

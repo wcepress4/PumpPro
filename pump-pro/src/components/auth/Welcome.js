@@ -1,6 +1,8 @@
 import React from 'react';
+import AuthService from '../../services/AuthService';
 
-const Home = () => {
+const Welcome = () => {
+
   return (
     <div>
       <h2>Home Page</h2>
@@ -9,4 +11,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Welcome;
