@@ -1,8 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { VscAccount } from 'react-icons/vsc';
+import AuthService from '../../services/AuthService';
 
-const HeaderComponent = ({ isLoggedIn }) => {
+const Header = () => {
+  const isLoggedIn = AuthService.isLoggedIn();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    AuthService.logoutUser();
+    navigate('/welcome');
+  };
+
   return (
     <header className="bg-white shadow-md">
       <nav className="container mx-auto flex items-center justify-between p-4">
@@ -23,41 +32,45 @@ const HeaderComponent = ({ isLoggedIn }) => {
         <div className="flex items-center space-x-2">
           <input 
             type="text" 
-            placeholder="Search..." rch
+            placeholder="Search..."
             className="border border-gray-300 rounded px-4 py-2"
           />
           <button className="bg-red-500 text-white px-4 py-1.5 w-18 rounded">Search</button>
         </div>
         
-        
         {/* User Actions */}
         <div className="flex items-center space-x-4">
-        <ul className="flex items-center space-x-4">
-          <li>
-            <Link to="/exercises" className="text-gray-700 hover:text-red-600">
-              Exercises
-            </Link>
-          </li>
-          <li>
-            <Link to="/pump-plans" className="text-gray-700 hover:text-red-600">
-              PumpPlans
-            </Link>
-          </li>
-          <li>
-            <Link to="/pump-panel" className="text-gray-700 hover:text-red-600">
-              PumpPanel
-            </Link>
-          </li>
-          <li>
-            <Link to="/pump-pedia" className="text-gray-700 hover:text-red-600">
-              PumpPedia
-            </Link>
-          </li>
-        </ul>
+          <ul className="flex items-center space-x-4">
+            <li>
+              <Link to="/exercises" className="text-gray-700 hover:text-red-600">
+                Exercises
+              </Link>
+            </li>
+            <li>
+              <Link to="/pump-plans" className="text-gray-700 hover:text-red-600">
+                PumpPlans
+              </Link>
+            </li>
+            <li>
+              <Link to="/pump-panel" className="text-gray-700 hover:text-red-600">
+                PumpPanel
+              </Link>
+            </li>
+            <li>
+              <Link to="/pump-pedia" className="text-gray-700 hover:text-red-600">
+                PumpPedia
+              </Link>
+            </li>
+          </ul>
           {isLoggedIn ? (
-            <Link to="/profile" className="text-gray-700 hover:text-red-600">
-              <VscAccount className="text-2xl" />
-            </Link>
+            <>
+              <Link to="/profile" className="text-gray-700 hover:text-red-600">
+                <VscAccount className="text-2xl" />
+              </Link>
+              <button onClick={handleLogout} className="bg-red-500 text-white px-3 py-1.5 w-18 rounded">
+                Logout
+              </button>
+            </>
           ) : (
             <>
               <Link to="/login">
@@ -78,4 +91,4 @@ const HeaderComponent = ({ isLoggedIn }) => {
   );
 };
 
-export default HeaderComponent;
+export default Header;

@@ -21,8 +21,14 @@ const LoginComponent = () => {
     try {
       const response = await AuthService.loginUser(formData);
       setSuccess('Login successful');
-      console.log('Logged In User:', response.data);
-      navigate('/home');
+      console.log('Logged In User:', response);
+      
+      // Redirect to home or admin page based on role
+      if (response.role === "ADMIN") {
+        navigate('/admin/users');
+      } else {
+        navigate('/home');
+      }
     } catch (error) {
       setError('Login failed');
       console.error('There was an error logging in!', error);

@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Home = () => {
+const AuthHome = () => {
   return (
     <div>
       <h2>Home Page</h2>
-      <p>This is the home page. Sign up to begin your PumpPro journey or log in to get a PUMP!</p>
+      <p>This is the auth home page. Time to get your Pump!</p>
     </div>
   );
 };
 
-export default Home;
+export default AuthHome;
