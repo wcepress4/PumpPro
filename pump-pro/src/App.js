@@ -15,6 +15,7 @@ import Home from './components/user/Home';
 import ListUser from './components/admin/ListUser';
 import EditUser from './components/admin/EditUser';
 import ProtectedRoute from './components/user/ProtectedRoute';
+import NotAuth from './components/auth/NotAuth';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             {/* auth routes */}
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/not-authorized" element={<NotAuth />} />
 
             {/* admin routes */}
             <Route path="/admin/users" element={<ProtectedRoute roles={['ADMIN']}><ListUser /></ProtectedRoute>} />

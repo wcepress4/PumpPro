@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const LoginComponent = () => {
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     login: '',
     password: '',
@@ -18,20 +19,16 @@ const LoginComponent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await AuthService.loginUser(formData);
+    setError('');
+    setSuccess('');
+
+    const success = await AuthService.loginUser(formData);
+
+    if (success) {
       setSuccess('Login successful');
-      console.log('Logged In User:', response);
-      
-      // Redirect to home or admin page based on role
-      if (response.role === "ADMIN") {
-        navigate('/admin/users');
-      } else {
-        navigate('/home');
-      }
-    } catch (error) {
-      setError('Login failed');
-      console.error('There was an error logging in!', error);
+      navigate('/home');
+    } else {
+      setError('Invalid username or password');
     }
   };
 
@@ -45,7 +42,7 @@ const LoginComponent = () => {
           <div className="mb-4">
             <label className="block mb-1 text-gray-700">Username</label>
             <input
-              type="login"
+              type="text"
               name="login"
               value={formData.login}
               onChange={handleChange}

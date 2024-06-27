@@ -30,7 +30,7 @@ const ProtectedRoute = ({ children, roles }) => {
   }
 
   if (!isAuthorized) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/home" />;
   }
 
   return children;
