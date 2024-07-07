@@ -6,7 +6,7 @@ import AuthService from '../../services/AuthService';
 const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const isLoggedIn = AuthService.isLoggedIn();
-  const isAdmin = AuthService.isAdmin(); // New isAdmin check
+  const isAdmin = AuthService.isAdmin();
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
 

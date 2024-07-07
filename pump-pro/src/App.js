@@ -5,9 +5,9 @@ import Footer from './components/nav/Footer';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import PumpPanel from './components/user/PumpPanel';
-import Exercises from './components/user/Exercises';
-import Profile from './components/user/Profile';
-import Settings from './components/user/Settings';
+import Exercises from './components/user/exercises/Exercises';
+import Profile from './components/user/account/Profile';
+import Settings from './components/user/account/Settings';
 import PumpPlans from './components/user/PumpPlans';
 import PumpPedia from './components/user/PumpPedia';
 import PumpWorkout from './components/user/PumpWorkout';
@@ -15,8 +15,9 @@ import Welcome from './components/auth/Welcome';
 import Home from './components/user/Home';
 import ListUser from './components/admin/ListUser';
 import EditUser from './components/admin/EditUser';
-import ProtectedRoute from './components/user/ProtectedRoute';
+import ProtectedRoute from './routes/ProtectedRoute';
 import NotAuth from './components/auth/NotAuth';
+import EditExercise from './components/user/exercises/EditExercise';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
             <Route path="/home" element={<ProtectedRoute roles={['USER', 'ADMIN']}><Home /></ProtectedRoute>} />
             <Route path="/pump-panel" element={<ProtectedRoute roles={['USER', 'ADMIN']}><PumpPanel /></ProtectedRoute>} />
             <Route path="/exercises" element={<ProtectedRoute roles={['USER', 'ADMIN']}><Exercises /></ProtectedRoute>} />
+            <Route path="/edit-exercise/:name" element={<ProtectedRoute roles={['USER', 'ADMIN']}><EditExercise /></ProtectedRoute>} />
             <Route path="/profile" element={<ProtectedRoute roles={['USER', 'ADMIN']}><Profile /></ProtectedRoute>} />
             <Route path="/settings" element={<ProtectedRoute roles={['USER', 'ADMIN']}><Settings /></ProtectedRoute>} />
             <Route path="/pump-plans" element={<ProtectedRoute roles={['USER', 'ADMIN']}><PumpPlans /></ProtectedRoute>} />

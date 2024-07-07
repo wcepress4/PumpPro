@@ -23,6 +23,10 @@ class UserService {
         return axios.delete(USER_BASE_REST_API_URL + '/' + userId)
     }
 
+    getUserIdByLogin(login) {
+        return axios.get(USER_BASE_REST_API_URL + '/id/' + login)
+    }
+
     // registerUser(user) {
     //     return axios.post(`${AUTH_BASE_REST_API_URL}/register`, user);
     // }

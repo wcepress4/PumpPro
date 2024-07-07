@@ -1,6 +1,7 @@
 // AuthService.js
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
+import UserService from './UserService';
 
 const AUTH_BASE_REST_API_URL = "http://localhost:8080";
 
@@ -55,6 +56,24 @@ class AuthService {
     const currentUser = this.getCurrentUser();
     return currentUser ? currentUser.role : null; // Assuming role is stored in JWT payload
   } //getUserRole
+
+  getUserLogin() {
+    const currentUser = this.getCurrentUser();
+    console.log('User login:', currentUser.sub);
+    return currentUser ? currentUser.sub : null; // Assuming 'sub' holds the username
+  }
+
+  async getUserId() {
+    const userLogin = this.getUserLogin();
+    try {
+      const userIdResponse = await UserService.getUserIdByLogin(userLogin);
+      console.log('User ID:', userIdResponse.data); // Log user ID to verify it's correct
+      return userIdResponse.data;
+    } catch (error) {
+      console.error('Error getting user ID:', error);
+      return null;
+    }
+  }
 
   isAdmin() {
     const currentUserRole = this.getUserRole();
