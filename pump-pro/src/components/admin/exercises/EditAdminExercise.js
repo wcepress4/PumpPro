@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ExerciseService from '../../../services/ExerciseService';
 
-const EditExercise = () => {
+const EditAdminExercise = () => {
   const { name } = useParams();
   const navigate = useNavigate();
 
@@ -44,11 +44,7 @@ const EditExercise = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      if (name) {
-        await ExerciseService.updateExercise(exercise.id, exercise);
-      } else {
-        await ExerciseService.createExercise(exercise);
-      }
+      await ExerciseService.updateExercise(exercise.id, exercise);
       setLoading(false);
       navigate('/exercises');
     } catch (error) {
@@ -59,7 +55,7 @@ const EditExercise = () => {
 
   return (
     <div className="container">
-      <h2>Edit Exercise</h2>
+      <h2>Edit Admin Exercise</h2>
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -101,4 +97,4 @@ const EditExercise = () => {
   );
 };
 
-export default EditExercise;
+export default EditAdminExercise;

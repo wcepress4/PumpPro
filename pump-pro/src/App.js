@@ -13,11 +13,12 @@ import PumpPedia from './components/user/PumpPedia';
 import PumpWorkout from './components/user/PumpWorkout';
 import Welcome from './components/auth/Welcome';
 import Home from './components/user/Home';
-import ListUser from './components/admin/ListUser';
-import EditUser from './components/admin/EditUser';
+import ListUser from './components/admin/users/ListUser';
+import EditUser from './components/admin/users/EditUser';
 import ProtectedRoute from './routes/ProtectedRoute';
 import NotAuth from './components/auth/NotAuth';
 import EditExercise from './components/user/exercises/EditExercise';
+import EditAdminExercise from './components/admin/exercises/EditAdminExercise';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
             <Route path="/pump-panel" element={<ProtectedRoute roles={['USER', 'ADMIN']}><PumpPanel /></ProtectedRoute>} />
             <Route path="/exercises" element={<ProtectedRoute roles={['USER', 'ADMIN']}><Exercises /></ProtectedRoute>} />
             <Route path="/edit-exercise/:name" element={<ProtectedRoute roles={['USER', 'ADMIN']}><EditExercise /></ProtectedRoute>} />
+            {/* <Route path="/edit-admin-exercise/:name" element={<ProtectedRoute roles={['ADMIN']}><EditAdminExercise /></ProtectedRoute>} /> */}
             <Route path="/profile" element={<ProtectedRoute roles={['USER', 'ADMIN']}><Profile /></ProtectedRoute>} />
             <Route path="/settings" element={<ProtectedRoute roles={['USER', 'ADMIN']}><Settings /></ProtectedRoute>} />
             <Route path="/pump-plans" element={<ProtectedRoute roles={['USER', 'ADMIN']}><PumpPlans /></ProtectedRoute>} />

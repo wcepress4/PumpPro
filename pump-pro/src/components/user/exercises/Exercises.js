@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 
 const Exercises = () => {
     const [exercises, setExercises] = useState([]);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
         fetchExercises();
+        checkIfAdmin();
     }, []);
 
     const fetchExercises = async () => {
@@ -17,6 +19,15 @@ const Exercises = () => {
             setExercises(response.data); // Assuming data is the correct property containing exercises
         } catch (error) {
             console.error('Error fetching exercises:', error);
+        }
+    };
+
+    const checkIfAdmin = async () => {
+        try {
+            const isAdmin = await AuthService.isAdmin();
+            setIsAdmin(isAdmin);
+        } catch (error) {
+            console.error('Error checking admin status:', error);
         }
     };
 
@@ -34,7 +45,9 @@ const Exercises = () => {
                                 <p className="card-text"><strong>Body Part:</strong> {exercise.bodyPart}</p>
                                 <p className="card-text"><strong>Category:</strong> {exercise.category}</p>
                                 <p className="card-text"><strong>Instructions:</strong> {exercise.instructions}</p>
-                                <Link className="btn btn-info" to={`/edit-exercise/${exercise.name}`}>Edit</Link>
+                                {(exercise.createdBy === AuthService.getCurrentUser().sub || isAdmin) && (
+                                    <Link className="btn btn-info" to={`/edit-exercise/${exercise.name}`}>Edit</Link>
+                                )}
                             </div>
                         </div>
                     </div>
