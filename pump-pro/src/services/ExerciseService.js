@@ -32,6 +32,10 @@ class ExerciseService {
   getAllExercisesByCurrentUserAndAdmins(userId) {
     return axios.get(`${EXERCISE_BASE_REST_API_URL}/current-user-and-admins?userId=${userId}`);
   }
+
+  getAdminStatusByExerciseCreator(exerciseId) {
+    return axios.get(`${EXERCISE_BASE_REST_API_URL}/${exerciseId}/admin-status`);
+  }
 }
 
 export default new ExerciseService();
