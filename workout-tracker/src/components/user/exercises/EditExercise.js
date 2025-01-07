@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ExerciseService from '../../../services/ExerciseService';
 
-const EditAdminExercise = () => {
+const EditExercise = () => {
   const { name } = useParams();
   const navigate = useNavigate();
 
   const [exercise, setExercise] = useState({
     name: '',
-    description: '',
     image: '',
     bodyPart: '',
     category: '',
@@ -25,7 +24,7 @@ const EditAdminExercise = () => {
   const fetchExercise = async () => {
     try {
       setLoading(true);
-      const response = await ExerciseService.getExerciseByName(name);
+      const response = await ExerciseService.getExerciseById(name);
       const exerciseData = response.data;
       setExercise(exerciseData);
       setLoading(false);
@@ -44,7 +43,11 @@ const EditAdminExercise = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      await ExerciseService.updateExercise(exercise.id, exercise);
+      if (name) {
+        await ExerciseService.updateExercise(exercise.id, exercise);
+      } else {
+        await ExerciseService.createExercise(exercise);
+      }
       setLoading(false);
       navigate('/exercises');
     } catch (error) {
@@ -55,7 +58,7 @@ const EditAdminExercise = () => {
 
   return (
     <div className="container">
-      <h2>Edit Admin Exercise</h2>
+      <h2>Edit Exercise</h2>
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -67,11 +70,11 @@ const EditAdminExercise = () => {
                 <input type="text" className="form-control" id="name" name="name"
                        value={exercise.name} onChange={handleInputChange} required />
               </div>
-              <div className="mb-3">
+              {/* <div className="mb-3">
                 <label htmlFor="image" className="form-label">Image URL</label>
                 <input type="text" className="form-control" id="image" name="image"
                        value={exercise.image} onChange={handleInputChange} />
-              </div>
+              </div> */}
               <div className="mb-3">
                 <label htmlFor="bodyPart" className="form-label">Body Part</label>
                 <input type="text" className="form-control" id="bodyPart" name="bodyPart"
@@ -97,4 +100,4 @@ const EditAdminExercise = () => {
   );
 };
 
-export default EditAdminExercise;
+export default EditExercise;
