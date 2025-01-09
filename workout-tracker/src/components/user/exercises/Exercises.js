@@ -81,18 +81,20 @@ const Exercises = () => {
   };
 
   return (
-    <div className="container">
-  <h2 className="text-center text-xl font-bold mb-4">List Exercises</h2>
+  <div className="container">
+    <div className="add-title-container relative flex items-center mb-4">
+    <div>
+          <button onClick={openModal} className="px-4 py-2 bg-green-500 text-white rounded-md">
+            New
+          </button>
 
-  <div>
-      <button onClick={openModal} className="px-4 py-2 bg-green-500 text-white rounded-md">
-        Add Exercise
-      </button>
+          {isAddExercise && (
+            <AddExercise onClose={closeModal} onExerciseAdded={handleExerciseAdded} />
+          )}
+      </div>
 
-      {isAddExercise && (
-        <AddExercise onClose={closeModal} onExerciseAdded={handleExerciseAdded} />
-      )}
-  </div>
+      <h2 className="absolute left-1/2 transform -translate-x-1/2 text-xl font-bold z-10">Exercises</h2>
+    </div>
 
   {/* Filter Dropdowns in a Row */}
   <div className="flex flex-wrap gap-4 mb-6">
