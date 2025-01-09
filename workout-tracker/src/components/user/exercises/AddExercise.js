@@ -33,7 +33,7 @@ const AddExercise = ({ onClose, onExerciseAdded }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
+    <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center z-50">
       <div className="bg-white p-6 rounded-md shadow-md w-1/2">
         <h2 className="text-xl font-bold mb-4">Add Exercise</h2>
         <form onSubmit={handleSubmit}>
